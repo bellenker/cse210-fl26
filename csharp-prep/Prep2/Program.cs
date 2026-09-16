@@ -1,4 +1,5 @@
 using System;
+using System.Reflection.Metadata;
 
 class Program
 {
@@ -8,41 +9,63 @@ class Program
         string userInput = Console.ReadLine();
         int grade = int.Parse(userInput);
 
+        string letter = "";
+
         if (grade >= 90)
         {
-            Console.WriteLine("You got an A!");
+            letter = "A";
         }
         else if (grade >= 80 && grade < 90)
         {
-            Console.WriteLine("You got a B!");
+            letter = "B";
         }
         else if (grade >= 70 && grade < 80)
         {
-            Console.WriteLine("You got a C!");
+            letter = "C";
         }
         else if (grade >= 60 && grade < 70)
         {
-            Console.WriteLine("You got a D.");
-        }
-        else if (grade > 0 && grade < 60)
-        {
-            Console.WriteLine("You got an F.");
+            letter = "D";
         }
         else
         {
-            Console.WriteLine("I'm sorry, that is not a valid grade percentage. Try again.");
+            letter = "F";
         }
-        if (grade >= 70 && grade <= 100)
+
+        int lnum = grade % 10;
+        string gradeSign = "";
+
+        if (lnum >= 7)
+        {
+            gradeSign = "+";
+        }
+        else if (lnum < 3)
+        {
+            gradeSign = "-";
+        }
+        else
+        {
+            gradeSign = "";
+        }
+
+        if (letter == "A" && gradeSign == "+")
+        {
+            gradeSign = "";
+        }
+        else if (letter == "F")
+        {
+            gradeSign = "";
+        }
+
+        Console.WriteLine($"Your grade is a/an {letter}{gradeSign}");
+
+        if (grade >= 70)
         {
             Console.WriteLine("Congratulations you pass!");
         }
-        else if (grade >= 0 && grade <= 69)
-        {
-            Console.WriteLine("You are almost there! Try again, you can do it!");
-        }
         else
         {
-            Console.WriteLine("Try again and write your percentage as two numbers. Ex: 69");
+            Console.WriteLine("You are almost there! Try again, you can do it!");
         }
     }
 }
