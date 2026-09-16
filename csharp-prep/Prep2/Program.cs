@@ -36,7 +36,7 @@ class Program
         {
             Console.WriteLine("Congratulations you pass!");
         }
-        else if (grade >= 69)
+        else if (grade >= 0 && grade <= 69)
         {
             Console.WriteLine("You are almost there! Try again, you can do it!");
         }
